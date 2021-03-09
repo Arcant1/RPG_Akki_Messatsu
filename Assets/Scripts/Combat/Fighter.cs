@@ -9,7 +9,7 @@ namespace RPG.Combat
         public float weaponRange = 2f;
         public float TimeBetweenAttacks = 1f;
         public float WeaponDamage = 5f;
-        private float timeSinceLastAttack = 0;
+        private float timeSinceLastAttack = Mathf.Infinity;
         private Health target;
 
         private void Update()
@@ -48,6 +48,8 @@ namespace RPG.Combat
 
         /// <summary>
         /// Animation event
+        /// this is not working properly because a character can hit a foe  even if they are not close
+        /// maybe a circle collider should fix this
         /// </summary>
         void Hit()
         {
@@ -66,13 +68,13 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("stopAttack");
         }
 
-        public bool CanAttack(CombatTarget combatTarget)
+        public bool CanAttack(GameObject combatTarget)
         {
             if (combatTarget == null) return false;
             Health testTarget = combatTarget.GetComponent<Health>();
             return testTarget != null && !testTarget.IsDead();
         }
-        public void Attack(CombatTarget target)
+        public void Attack(GameObject target)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             this.target = target.GetComponent<Health>();

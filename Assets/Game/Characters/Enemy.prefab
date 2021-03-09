@@ -1,20 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!136 &603623835877262216
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102362522741182109}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.69
-  m_Height: 2.38
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.92, z: 0}
---- !u!114 &1496487812
+--- !u!114 &2323446947988427150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1102362522741182109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4439816cfa7a49a4aabaf2e003a14caf, type: 3}
+  m_Script: {fileID: 11500000, guid: 081d5cd04b8579c46a6d120a00e9e52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &2955543415457001591
+  chaseDistance: 5
+--- !u!1001 &4626158691234420087
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -90,6 +77,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 900188219, guid: f3845e26a329f0a4c904e962863b36ab, type: 3}
+      propertyPath: m_Speed
+      value: 3.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 603623835877262216, guid: f3845e26a329f0a4c904e962863b36ab,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3991789526950747753, guid: f3845e26a329f0a4c904e962863b36ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -145,15 +141,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6717622241696734318, guid: f3845e26a329f0a4c904e962863b36ab,
-        type: 3}
-      propertyPath: health
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8204187542721429598, guid: f3845e26a329f0a4c904e962863b36ab,
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204187542721429598, guid: f3845e26a329f0a4c904e962863b36ab,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3845e26a329f0a4c904e962863b36ab, type: 3}

@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 using RPG.Movement;
 using RPG.Combat;
-using System;
+using RPG.Core;
 
 namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
         private Mover mover;
+        private Health health;
         private void Start()
         {
+            health = GetComponent<Health>();
             mover = GetComponent<Mover>();
         }
         private static Ray GetMouseRay() => Camera.main.ScreenPointToRay(Input.mousePosition);
         void Update()
         {
+            if (health.IsDead()) return;
             if (InteractWithCombat()) return;
             if (InteractWithMovement()) return;
         }
@@ -25,10 +28,11 @@ namespace RPG.Control
             foreach (RaycastHit hit in hits)
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if (!GetComponent<Fighter>().CanAttack(target)) continue;
-                if (Input.GetMouseButtonDown(0))
+                if (target == null) continue;
+                if (!GetComponent<Fighter>().CanAttack(target.gameObject)) continue;
+                if (Input.GetMouseButton(0))
                 {
-                    GetComponent<Fighter>().Attack(target);
+                    GetComponent<Fighter>().Attack(target.gameObject);
                 }
                 return true;
             }

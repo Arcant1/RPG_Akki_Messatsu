@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace RPG.Combat
+namespace RPG.Core
 {
     public class Health : MonoBehaviour
     {
@@ -10,13 +10,19 @@ namespace RPG.Combat
 
         public void TakeDamage(float damage)
         {
-            if (alreadyDead) return;
             health = Mathf.Clamp(health - damage, 0f, 100f);
             if (health == 0)
             {
-                GetComponent<Animator>().SetTrigger("die");
-                alreadyDead = true;
+                Die();
             }
+        }
+
+        private void Die()
+        {
+            if (alreadyDead) return;
+            GetComponent<Animator>().SetTrigger("die");
+            alreadyDead = true;
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
     }
 }

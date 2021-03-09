@@ -13,6 +13,10 @@ namespace RPG.Core
             currectAction?.Cancel();
             currectAction = action;
         }
+        public void CancelCurrentAction()
+        {
+            StartAction(null);
+        }
     }
 
 }
